@@ -37,8 +37,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDomain login(String username, String password) {
-        if (StringUtils.isBlank(username) || StringUtils.isBlank(password))
+        if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
             throw BusinessException.withErrorCode(ErrorConstant.Auth.USERNAME_PASSWORD_IS_EMPTY);
+        }
 
         String pwd = TaleUtils.MD5encode(username + password);
         UserDomain user = userDao.getUserInfoByCond(username, pwd);

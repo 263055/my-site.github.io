@@ -27,6 +27,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by winterchen on 2018/4/30.
@@ -75,7 +77,20 @@ public class AuthController extends BaseController{
             if (StringUtils.isNotBlank(remeber_me)) {
                 TaleUtils.setCookie(response, userInfo.getUid());
             }
-            logService.addLog(LogActions.LOGIN.getAction(), null, request.getRemoteAddr(), userInfo.getUid());
+            // 加入了时间，可以在数据库的log表看到时间
+            Date date = new Date();
+            SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+            System.out.println("wzy " + ip.equals(request.getRemoteAddr()));
+            System.out.println("wzy " + ip);
+            System.out.println("wzy " + request.getRemoteAddr());
+            /*
+              request.getRemoteAddr()和request.getHeader("x-forwarded-for")得到的ip有什么区别吗
+              request.getRemoteAddr()得到的是发出请求的客户端的IP地址，
+              而request.getHeader("x-forwarded-for")得到的是客户端真实的IP地址，
+              它可能是从客户端代理服务器经过多次转发后得到的。
+             */
+            logService.addLog(LogActions.LOGIN.getAction(), dateFormat.format(date), request.getRemoteAddr(), userInfo.getUid());
+//            logService.addLog(LogActions.LOGIN.getAction(), null, request.getRemoteAddr(), userInfo.getUid());
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             error_count = null == error_count ? 1 : error_count + 1;

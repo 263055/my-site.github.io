@@ -35,7 +35,7 @@ import java.util.List;
 @Api("后台首页")
 @Controller("adminIndexController")
 @RequestMapping(value = "/admin")
-public class IndexController extends BaseController{
+public class IndexController extends BaseController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
@@ -49,11 +49,17 @@ public class IndexController extends BaseController{
     private UserService userService;
 
 
-
     @ApiOperation("进入首页")
-    @GetMapping(value = {"","/index"})
-    public String index(HttpServletRequest request){
+    @GetMapping(value = {"", "/index"})
+    public String index(HttpServletRequest request) {
         LOGGER.info("Enter admin index method");
+        /*
+            PageHelper.startPage(1, limit);
+            PageHelper会自动将查询数据的sql语句转换成查询总条数的sql语句，
+            即SELECT count(0)语句，以获取查询数据的总条数，从而实现分页功能。
+            底层i盗用setLocalPage()方法，LOCAL_PAGE是当前线程，通常存储数据为了在同一个线程中都可以访问到
+            这里的意思就是 将分页信息保存在当前线程中
+         */
         List<CommentDomain> comments = siteService.getComments(5);
         List<ContentDomain> contents = siteService.getNewArticles(5);
         StatisticsDto statistics = siteService.getStatistics();
@@ -82,21 +88,29 @@ public class IndexController extends BaseController{
      */
     @PostMapping(value = "/profile")
     @ResponseBody
-    public APIResponse saveProfile(@RequestParam String screenName, @RequestParam String email, HttpServletRequest request, HttpSession session) {
+    public APIResponse saveProfile(@RequestParam String screenName,
+                                   @RequestParam String email,
+                                   HttpServletRequest request,
+                                   HttpSession session) {
         UserDomain users = this.user(request);
         if (StringUtils.isNotBlank(screenName) && StringUtils.isNotBlank(email)) {
             UserDomain temp = new UserDomain();
             temp.setUid(users.getUid());
             temp.setScreenName(screenName);
             temp.setEmail(email);
+            String up = "uid:" + temp.getUid() + ",name:" + temp.getScreenName() + " ";
             userService.updateUserInfo(temp);
-            logService.addLog(LogActions.UP_INFO.getAction(), GsonUtils.toJsonString(temp), request.getRemoteAddr(), this.getUid(request));
+            logService.addLog(LogActions.UP_INFO.getAction()
+//                    , GsonUtils.toJsonString(temp)
+                    , up
+                    , request.getRemoteAddr()
+                    , this.getUid(request));
 
             //更新session中的数据
-            UserDomain original= (UserDomain) session.getAttribute(WebConst.LOGIN_SESSION_KEY);
+            UserDomain original = (UserDomain) session.getAttribute(WebConst.LOGIN_SESSION_KEY);
             original.setScreenName(screenName);
             original.setEmail(email);
-            session.setAttribute(WebConst.LOGIN_SESSION_KEY,original);
+            session.setAttribute(WebConst.LOGIN_SESSION_KEY, original);
         }
         return APIResponse.success();
     }
@@ -106,7 +120,10 @@ public class IndexController extends BaseController{
      */
     @PostMapping(value = "/password")
     @ResponseBody
-    public APIResponse upPwd(@RequestParam String oldPassword, @RequestParam String password, HttpServletRequest request,HttpSession session) {
+    public APIResponse upPwd(@RequestParam String oldPassword
+            , @RequestParam String password
+            , HttpServletRequest request
+            , HttpSession session) {
         UserDomain users = this.user(request);
         if (StringUtils.isBlank(oldPassword) || StringUtils.isBlank(password)) {
             return APIResponse.fail("请确认信息输入完整");
@@ -125,14 +142,19 @@ public class IndexController extends BaseController{
             String pwd = TaleUtils.MD5encode(users.getUsername() + password);
             temp.setPassword(pwd);
             userService.updateUserInfo(temp);
-            logService.addLog(LogActions.UP_PWD.getAction(), null, request.getRemoteAddr(), this.getUid(request));
+            String up = "管理员: " + users.getScreenName() + " ";
+            logService.addLog(LogActions.UP_PWD.getAction()
+                    , up
+                    , request.getRemoteAddr()
+                    , users.getUid());
+//                  , this.getUid(request));
 
             //更新session中的数据
-            UserDomain original= (UserDomain)session.getAttribute(WebConst.LOGIN_SESSION_KEY);
+            UserDomain original = (UserDomain) session.getAttribute(WebConst.LOGIN_SESSION_KEY);
             original.setPassword(pwd);
-            session.setAttribute(WebConst.LOGIN_SESSION_KEY,original);
+            session.setAttribute(WebConst.LOGIN_SESSION_KEY, original);
             return APIResponse.success();
-        } catch (Exception e){
+        } catch (Exception e) {
             String msg = "密码修改失败";
             if (e instanceof BusinessException) {
                 msg = e.getMessage();
@@ -142,8 +164,6 @@ public class IndexController extends BaseController{
             return APIResponse.fail(msg);
         }
     }
-
-
 
 
 }

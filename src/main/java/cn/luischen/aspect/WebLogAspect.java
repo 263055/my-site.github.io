@@ -17,9 +17,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 
-/**
+/*
  * 请求的日志处理
  * Created by winterchen on 2018/4/28.
+ * Advice，在切入点上执行的增强处理，主要有五个注解：
+ * @Before 在切点方法之前执行
+ * @After 在切点方法之后执行
+ * @AfterReturning 切点方法返回后执行
+ * @AfterThrowing 切点方法抛异常执行
+ * @Around 属于环绕增强，能控制切点执行前，执行后
  */
 @Aspect
 @Component
@@ -32,6 +38,13 @@ public class WebLogAspect {
 
     ThreadLocal<Long> startTime = new ThreadLocal<>();
 
+    /*
+     *     定义切点,切点为对应controller
+     * 注： execution表达式第一个*表示匹配任意的方法返回值，
+     *     第二个*表示所有controller包下的类，
+     *     第三个*表示所有方法,
+     *     第一个..表示任意参数个数。
+     */
     @Pointcut("execution(public * cn.luischen.controller..*.*(..))")
     public void webLog(){}
 

@@ -140,12 +140,12 @@ public class MetaServiceImpl implements MetaService {
 
         MetaDomain meta = metaDao.getMetaById(mid);
         if (null != meta){
-            String type = meta.getType();
-            String name = meta.getName();
             metaDao.deleteMetaById(mid);
             //需要把相关的数据删除
             List<RelationShipDomain> relationShips = relationShipDao.getRelationShipByMid(mid);
             if (null != relationShips && relationShips.size() > 0){
+                String type = meta.getType();
+                String name = meta.getName();
                 for (RelationShipDomain relationShip : relationShips) {
                     ContentDomain article = contentService.getArticleById(relationShip.getCid());
                     if (null != article){
@@ -200,7 +200,7 @@ public class MetaServiceImpl implements MetaService {
             if (StringUtils.isBlank(orderby)) {
                 orderby = "count desc, a.mid desc";
             }
-            if (limit < 1 || limit > WebConst.MAX_POSTS) {
+            if (limit < 1 || limit > WebConst.MAX_POSTS)  {
                 limit = 10;
             }
             Map<String, Object> paraMap = new HashMap<>();

@@ -131,8 +131,7 @@ public class ArticleController extends BaseController {
     @GetMapping(value = "/{cid}")
     public String editArticle(
             @ApiParam(name = "cid", value = "文章编号", required = true)
-            @PathVariable
-                    Integer cid,
+            @PathVariable Integer cid,
             HttpServletRequest request
     ){
         ContentDomain content = contentService.getArticleById(cid);
