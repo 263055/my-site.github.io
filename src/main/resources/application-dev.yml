@@ -73,4 +73,4 @@ qiniu:
   serectkey: "JTL2OtShOi6JwWJgN009dk8e6XK_FSTurKLRPIaH"
   bucket: "text-263055"
   cdn:
-    url: "rob7j94d4.hn-bkt.clouddn.com"
+    url: "https://portal.qiniu.com/cdn/domain/rob7j94d4.hn-bkt.clouddn.com"

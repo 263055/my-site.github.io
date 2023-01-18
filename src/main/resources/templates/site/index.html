@@ -4,12 +4,17 @@
 <div th:replace="site/head::head(${commons.site_title()},${commons.google_site_verification()}, ${commons.baidu_site_verification()})"></div>
 
 <body>
+<!-- 鼠标点击效果 -->
+<script src="https://blog-static.cnblogs.com/files/e-cat/cursor-effects.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/TRHX/CDN-for-love109.cn@1.7/js/love.js"></script>
+<!--<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/TRHX/CDN-for-love109.cn@1.7/js/love.js"></script>-->
 
 <!-- header -->
 
 <div th:replace="site/header::header"></div>
 
-<!-- header --> 
+<!-- header -->
 
 <!-- main -->
 
@@ -76,7 +81,7 @@
   </div>
 </main>
 
-<!-- main --> 
+<!-- main -->
 
 <!-- footer -->
 <div th:replace="site/footer::footer(${commons.site_title()},${commons.site_record()},${commons.site_url()})"></div>
