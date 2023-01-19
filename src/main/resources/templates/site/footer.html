@@ -4,7 +4,9 @@
 
     <!-- logo -->
 
-    <h1> <a th:href="@{/}" title="avana LLC"><img th:src="@{https://cdn.jsdelivr.net/gh/WinterChenS/imgrpo/blog/20210816112027.png}" style="width: 66px;" title="Luis" alt="Luis"/></a> </h1>
+    <h1><a th:href="@{/}" title="avana LLC"><img
+            th:src="@{https://cdn.jsdelivr.net/gh/WinterChenS/imgrpo/blog/20210816112027.png}" style="width: 66px;"
+            title="Luis" alt="Luis"/></a></h1>
 
 
     <!-- logo -->
@@ -13,9 +15,9 @@
 
     <nav role="footer-nav">
         <ul>
-            <li><a th:href="@{/}" title="Work">Work</a></li>
-            <li><a th:href="@{/about}" title="About">About</a></li>
-            <li><a th:href="@{/blog/index}" title="Blog">Blog</a></li>
+            <li><a th:href="@{/}" title="Work">工作</a></li>
+<!--            <li><a th:href="@{/about}" title="About">关于</a></li>-->
+            <li><a th:href="@{/blog/index}" title="Blog">博客</a></li>
         </ul>
     </nav>
 
@@ -28,32 +30,74 @@
                     <th:block th:case="'csdn'">
                         <li><a class="icon csdn" target="blank" th:href="@{${index.value}}"></a></li>
                     </th:block>
-                    <th:block th:case="'jianshu'">
-                        <li><a class="icon jianshu" target="blank" th:href="@{${index.value}}"></a></li>
-                    </th:block>
-                    <th:block th:case="'resume'">
-                        <li><a class="icon resume" target="blank" th:href="@{${index.value}}"></a></li>
-                    </th:block>
-                    <th:block th:case="'weibo'">
-                        <li><a class="icon weibo" th:href="@{${index.value}}" target="blank"></a></li>
-                    </th:block>
-                    <th:block th:case="'zhihu'">
-                        <li><a class="icon zhihu" target="blank" th:href="@{${index.value}}"></a></li>
-                    </th:block>
+<!--                    <th:block th:case="'jianshu'">-->
+<!--                        <li><a class="icon jianshu" target="blank" th:href="@{${index.value}}"></a></li>-->
+<!--                    </th:block>-->
+<!--                    <th:block th:case="'resume'">-->
+<!--                        <li><a class="icon resume" target="blank" th:href="@{${index.value}}"></a></li>-->
+<!--                    </th:block>-->
+<!--                    <th:block th:case="'weibo'">-->
+<!--                        <li><a class="icon weibo" th:href="@{${index.value}}" target="blank"></a></li>-->
+<!--                    </th:block>-->
+<!--                    <th:block th:case="'zhihu'">-->
+<!--                        <li><a class="icon zhihu" target="blank" th:href="@{${index.value}}"></a></li>-->
+<!--                    </th:block>-->
                     <th:block th:case="'github'">
                         <li><a class="icon github" target="blank" th:href="@{${index.value}}"></a></li>
                     </th:block>
-                    <th:block th:case="'twitter'">
-                        <li><a class="icon twitter" target="blank" th:href="@{${index.value}}"></a></li>
-                    </th:block>
+<!--                    <th:block th:case="'twitter'">-->
+<!--                        <li><a class="icon twitter" target="blank" th:href="@{${index.value}}"></a></li>-->
+<!--                    </th:block>-->
                 </th:block>
             </th:block>
         </th:block>
     </ul>
-    <p class="copy-right">&copy; 2018 <th:block th:text="${title}"></th:block></p>
-    <th:block th:if="${record != null and record != ''}"><a class="copy-right" th:href="@{http://www.miitbeian.gov.cn/}" th:text="${record}"></a></th:block>
+    <p class="copy-right">&copy; 2023
+        <th:block th:text="${title}"></th:block>
+    </p>
+<!--    <th:block th:if="${record != null and record != ''}"><a class="copy-right" th:href="@{http://www.miitbeian.gov.cn/}"-->
+<!--                                                            th:text="${record}"></a></th:block>-->
 </footer>
+<style>
 
+    .live2d-widget-dialog-container {
+        width: 300px;
+        height: 120px;
+        position: absolute;
+        top: 20px;
+        right: -30px;
+        transform-origin: right;
+        padding: 12px;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .live2d-widget-dialog {
+        width: 100%;
+        height: 100%;
+        color: #917159;
+        font-size: 16px;
+        padding: 12px;
+        border: 2px solid rgb(236, 203, 180);
+        background: rgb(252, 248, 244);
+        box-sizing: border-box;
+        border-radius: 10px;
+        transform: rotate(-2deg);
+        opacity: 0;
+        transition: 200ms opacity;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+        animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;
+    }
+
+    @keyframes live2d-widget-dialog-tingle {
+        0% {
+            transform: translate(-1px, 1.5px) rotate(-2deg);
+        }
+        100% {
+            transform: translate(1px, -1.5px) rotate(2deg);
+        }
+    }
+</style>
 <!-- footer -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -68,15 +112,81 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 
 <script th:src="@{/site/js/bootstrap.min.js}" type="text/javascript"></script>
-<script th:src="@{/site/js/effects/masonry.pkgd.min.js}"  type="text/javascript"></script>
-<script th:src="@{/site/js/effects/imagesloaded.js}"  type="text/javascript"></script>
-<script th:src="@{/site/js/effects/classie.js}"  type="text/javascript"></script>
-<script th:src="@{/site/js/effects/AnimOnScroll.js}"  type="text/javascript"></script>
+<script th:src="@{/site/js/effects/masonry.pkgd.min.js}" type="text/javascript"></script>
+<script th:src="@{/site/js/effects/imagesloaded.js}" type="text/javascript"></script>
+<script th:src="@{/site/js/effects/classie.js}" type="text/javascript"></script>
+<script th:src="@{/site/js/effects/AnimOnScroll.js}" type="text/javascript"></script>
 <script th:src="@{/site/js/effects/modernizr.custom.js}"></script>
 <script th:src="@{https://cdn.bootcss.com/headroom/0.9.1/headroom.min.js}"></script>
 <script th:src="@{https://cdn.bootcss.com/highlight.js/9.9.0/highlight.min.js}"></script>
 <script th:src="@{https://cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js}"></script>
+<script th:src="@{/site/js/sakura.js}" type="text/javascript"></script>
+<!--<script th:src="@{https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@3.0.6/js/snow3.js}"></script>-->
+<script src="https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@3.0.6/js/snow3.js"></script>
+<canvas height="1289" width="1884" style="position: fixed;left: 0;top: 0;pointer-events: none;"
+        id="canvas_sakura"></canvas>
+<link rel="stylesheet" th:href="@{/live2d/css/live2d.css}"/>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = 'https://localhost:8089/'  //此处修改为你的域名，必须带斜杠
+</script>
+<script type="text/javascript" th:src="@{/live2d/js/live2d.js}"></script>
+<script type="text/javascript" th:src="@{/live2d/js/message.js}"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/site/live2d/model/tia/model.json");
+</script>
+<div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+    <div class="hide-button">隐藏</div>
+</div>
 
+<!--<script>-->
+<!--    L2Dwidget.init({-->
+<!--        "model": {jsonPath:"https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json","scale": 1 },-->
+<!--        "display": { "position": "left", "width": 150, "height": 300,"hOffset": 0, "vOffset": -20 },-->
+<!--        "mobile": { "show": true, "scale": 0.5 },-->
+<!--        "react": { "opacityDefault": 0.7, "opacityOnHover": 0.2 } });-->
+<!--</script>-->
+<!--<script th:src="@{/site/js/L2Dwidget.min.js}"></script>-->
+<!--<script th:src="@{/site/js/L2Dwidget.0.min.js}"></script>-->
+<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.0.min.js"></script>
+<script>
+    L2Dwidget.init({
+        "model": {
+            // "jsonPath": "/live2d_models/tororo/tororo.model.json", // 动画定制，修改这里
+            "jsonPath": "https://unpkg.com/live2d-widget-model-tororo@1.0.5/assets/tororo.model.json", // 动画定制，修改这里
+            "scale": 1
+        },
+        "dialog": {
+            enable: true,
+            script: {
+                'every idle 10s': '喵~你是来看我的么？点击右上角的导航栏，给我留言吧',
+            }
+        },
+        "react": {
+            "opacity": 1
+        },
+        "display": {
+            "superSample": 2,
+            "width": 150,
+            "height": 300,
+            "position": "left",
+            "hOffset": 0,
+            "vOffset": -150
+        },
+        "mobile": {"show": false, "scale": 0.5},
+    });
+</script>
+<div id="live2d-widget" class="live2d-widget-container"
+     style="position: fixed; left: 50px; bottom: -150px; width: 350px; height: 660px; z-index: 99999; opacity: 0.8; pointer-events: none;">
+    <div class="live2d-widget-dialog-container" style="transform: scale(1.4);">
+        <div class="live2d-widget-dialog" style="opacity: 1;">喵~你是来看我的么？点击右上角的导航栏，给我留言吧</div>
+    </div>
+    <canvas id="live2dcanvas" width="700" height="1320"
+            style="position: absolute; left: 0px; top: 0px; width: 350px; height: 660px;"></canvas>
+</div>
 <!-- jquery.countdown -->
 
 <script th:src="@{/site/js/html5shiv.js}" type="text/javascript"></script>
@@ -96,13 +206,12 @@
 </script>
 <!-- 百度收录自动推送 -->
 <script>
-    (function(){
+    (function () {
         var bp = document.createElement('script');
         var curProtocol = window.location.protocol.split(':')[0];
         if (curProtocol === 'https') {
             bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        }
-        else {
+        } else {
             bp.src = 'http://push.zhanzhang.baidu.com/push.js';
         }
         var s = document.getElementsByTagName("script")[0];
@@ -110,7 +219,103 @@
     })();
 
     function linkFirend(link) {
-        window.location.href=link;
+        window.location.href = link;
     }
+
+    // (function (window, document, undefined) {
+    //     var hearts = [];
+    //     window.requestAnimationFrame = (function () {
+    //         return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    //             function (callback) {
+    //                 setTimeout(callback, 1000 / 60);
+    //             }
+    //     })();
+    //     init();
+    //
+    //     function init() {
+    //         css(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+    //         attachEvent();
+    //         gameloop();
+    //     }
+    //
+    //     function gameloop() {
+    //         for (var i = 0; i < hearts.length; i++) {
+    //             if (hearts[i].alpha <= 0) {
+    //                 document.body.removeChild(hearts[i].el);
+    //                 hearts.splice(i, 1);
+    //                 continue;
+    //             }
+    //             hearts[i].y--;
+    //             hearts[i].scale += 0.004;
+    //             hearts[i].alpha -= 0.013;
+    //             hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+    //         }
+    //         requestAnimationFrame(gameloop);
+    //     }
+    //
+    //     function attachEvent() {
+    //         var old = typeof window.onclick === "function" && window.onclick;
+    //         window.onclick = function (event) {
+    //             old && old();
+    //             createHeart(event);
+    //         }
+    //     }
+    //
+    //     function createHeart(event) {
+    //         var d = document.createElement("div");
+    //         d.className = "heart";
+    //         hearts.push({
+    //             el: d,
+    //             x: event.clientX - 5,
+    //             y: event.clientY - 5,
+    //             scale: 1,
+    //             alpha: 1,
+    //             color: randomColor()
+    //         });
+    //         document.body.appendChild(d);
+    //     }
+    //
+    //     function css(css) {
+    //         var style = document.createElement("style");
+    //         style.type = "text/css";
+    //         try {
+    //             style.appendChild(document.createTextNode(css));
+    //         } catch (ex) {
+    //             style.styleSheet.cssText = css;
+    //         }
+    //         document.getElementsByTagName('head')[0].appendChild(style);
+    //     }
+    //
+    //     function randomColor() {
+    //         return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+    //     }
+    // })(window, document);
+    var a_idx = 0;
+    jQuery(document).ready(function ($) {
+        $("body").click(function (e) {
+            var a = ["❤富强❤", "❤民主❤", "❤文明❤", "❤和谐❤", "❤自由❤", "❤平等❤", "❤公正❤", "❤法治❤", "❤爱国❤", "❤敬业❤", "❤诚信❤", "❤友善❤"];
+            var $i = $("<span></span>").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            var x = e.pageX,
+                y = e.pageY;
+            $i.css({
+                "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "color": "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+            });
+            $("body").append($i);
+            $i.animate({
+                    "top": y - 180,
+                    "opacity": 0
+                },
+                1500,
+                function () {
+                    $i.remove();
+                });
+        });
+    });
 </script>
 </html>

@@ -1,14 +1,50 @@
 <!DOCTYPE HTML>
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>❤欢迎来到我的世界❤</title>
 <div th:replace="site/head::head(${commons.site_title()},${commons.google_site_verification()}, ${commons.baidu_site_verification()})"></div>
+<!--<style>-->
 
+<!--    .live2d-widget-dialog-container {-->
+<!--        width: 300px;-->
+<!--        height: 120px;-->
+<!--        position: absolute;-->
+<!--        top: 20px;-->
+<!--        right: -30px;-->
+<!--        transform-origin: right;-->
+<!--        padding: 12px;-->
+<!--        box-sizing: border-box;-->
+<!--        -webkit-font-smoothing: antialiased;-->
+<!--    }-->
+
+<!--    .live2d-widget-dialog {-->
+<!--        width: 100%;-->
+<!--        height: 100%;-->
+<!--        color: #917159;-->
+<!--        font-size: 16px;-->
+<!--        padding: 12px;-->
+<!--        border: 2px solid rgb(236, 203, 180);-->
+<!--        background: rgb(252, 248, 244);-->
+<!--        box-sizing: border-box;-->
+<!--        border-radius: 10px;-->
+<!--        transform: rotate(-2deg);-->
+<!--        opacity: 0;-->
+<!--        transition: 200ms opacity;-->
+<!--        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;-->
+<!--        animation: live2d-widget-dialog-tingle 4s ease-in-out 0s infinite alternate;-->
+<!--    }-->
+
+<!--    @keyframes live2d-widget-dialog-tingle {-->
+<!--        0% {-->
+<!--            transform: translate(-1px, 1.5px) rotate(-2deg);-->
+<!--        }-->
+<!--        100% {-->
+<!--            transform: translate(1px, -1.5px) rotate(2deg);-->
+<!--        }-->
+<!--    }-->
+<!--</style>-->
 <body>
 
-<!-- 鼠标点击效果 -->
-<script src="https://blog-static.cnblogs.com/files/e-cat/cursor-effects.js"></script>
-<!-- 页面点击小红心 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/TRHX/CDN-for-love109.cn@1.7/js/love.js"></script>
 
 <!-- header -->
 
@@ -31,11 +67,11 @@
 
                 <header>
 
-                    <h2><span>Blog</span> write by luis</h2>
+                    <h2><span>Blog</span> write by wzy</h2>
 
                 </header>
 
-                <p>Some technical blogs and life logs about Java.</p>
+                <p>记录一些关于Java的知识或分享一些有用或有趣的东西</p>
 
             </article>
 
@@ -55,7 +91,8 @@
 
                                         </div>
 
-                                        <img th:src="${commons.show_thumb(article.content) ?:commons.randomBlogPic(1322)}" alt=""
+                                        <img th:src="${commons.show_thumb(article.content) ?:commons.randomBlogPic(1322)}"
+                                             alt=""
                                              class="img-responsive"/>
 
                                     </figure>
@@ -99,7 +136,8 @@
 
                                         </div>
 
-                                        <img th:src="${commons.show_thumb(article.content) ?:commons.randomBlogPic(1221)}" alt=""
+                                        <img th:src="${commons.show_thumb(article.content) ?:commons.randomBlogPic(1221)}"
+                                             alt=""
                                              class="img-responsive"/>
 
                                     </figure>
@@ -134,7 +172,6 @@
 <!-- footer -->
 
 <div th:replace="site/footer::footer(${commons.site_title()},${commons.site_record()},${commons.site_url()})"></div>
-
 </body>
 
 </html>

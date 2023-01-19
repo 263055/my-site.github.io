@@ -33,20 +33,11 @@
             allowPing, allowFeed,
         </trim>
         <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
-            #{title, jdbcType=VARCHAR},
-            #{titlePic, jdbcType=VARCHAR},
-            #{slug, jdbcType=VARCHAR}, UNIX_TIMESTAMP(NOW()),
-            #{content, jdbcType=LONGVARCHAR},
-            #{authorId, jdbcType=INTEGER},
-            #{type, jdbcType=VARCHAR},
-            #{status, jdbcType=VARCHAR},
-            #{tags, jdbcType=VARCHAR},
-            #{categories, jdbcType=VARCHAR},
-            #{hits, jdbcType=INTEGER},
-            #{commentsNum, jdbcType=INTEGER},
-            #{allowComment, jdbcType=INTEGER},
-            #{allowPing, jdbcType=INTEGER},
-            #{allowFeed, jdbcType=INTEGER},
+            #{title, jdbcType=VARCHAR}, #{titlePic, jdbcType=VARCHAR}, #{slug, jdbcType=VARCHAR}, UNIX_TIMESTAMP(NOW()),
+            #{content, jdbcType=LONGVARCHAR}, #{authorId, jdbcType=INTEGER},
+            #{type, jdbcType=VARCHAR}, #{status, jdbcType=VARCHAR}, #{tags, jdbcType=VARCHAR},
+            #{categories, jdbcType=VARCHAR}, #{hits, jdbcType=INTEGER}, #{commentsNum, jdbcType=INTEGER},
+            #{allowComment, jdbcType=INTEGER}, #{allowPing, jdbcType=INTEGER}, #{allowFeed, jdbcType=INTEGER},
         </trim>
     </insert>
 

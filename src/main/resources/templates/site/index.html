@@ -1,88 +1,122 @@
 <!DOCTYPE HTML>
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>❤欢迎来到我的世界❤</title>
 <div th:replace="site/head::head(${commons.site_title()},${commons.google_site_verification()}, ${commons.baidu_site_verification()})"></div>
-
 <body>
-<!-- 鼠标点击效果 -->
-<script src="https://blog-static.cnblogs.com/files/e-cat/cursor-effects.js"></script>
-<!-- 页面点击小红心 -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/TRHX/CDN-for-love109.cn@1.7/js/love.js"></script>
-<!--<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/TRHX/CDN-for-love109.cn@1.7/js/love.js"></script>-->
+<script>
+    var timeTask = null
 
+    function timer() {
+        var date1 = '2022/10/01 00:00:00';  //开始时间
+        var date2 = '2023/01/19 00:00:00';  //开始时间
+        var date3 = new Date(); //结束时间
+        var t1 = date3.getTime() - new Date(date1).getTime();
+        var t2 = date3.getTime() - new Date(date2).getTime();
+        var h1 = ~~(t1 / 1000 / 60 / 60 % 24);
+        if (h1 < 10) {
+            h1 = "0" + h1;
+        }
+        var m1 = ~~(t1 / 1000 / 60 % 60);
+        if (m1 < 10) {
+            m1 = "0" + m1;
+        }
+        var s1 = ~~(t1 / 1000 % 60);
+        if (s1 < 10) {
+            s1 = "0" + s1;
+        }
+        if (!document.getElementById('d1')) {
+            clearInterval(timeTask);
+            timeTask = null;
+            return;
+        }
+        document.getElementById('d1').innerHTML = ~~(t1 / 1000 / 60 / 60 / 24);
+        /*document.getElementById('h1').innerHTML = h1;
+        document.getElementById('m1').innerHTML = m1;
+        document.getElementById('s1').innerHTML = s1;*/
+        var h2 = ~~(t2 / 1000 / 60 / 60 % 24);
+        if (h2 < 10) {
+            h2 = "0" + h2;
+        }
+        var m2 = ~~(t2 / 1000 / 60 % 60);
+        if (m2 < 10) {
+            m2 = "0" + m2;
+        }
+        var s2 = ~~(t2 / 1000 % 60);
+        if (s2 < 10) {
+            s2 = "0" + s2;
+        }
+        document.getElementById('d2').innerHTML = ~~(t2 / 1000 / 60 / 60 / 24);
+        document.getElementById('h2').innerHTML = h2;
+        document.getElementById('m2').innerHTML = m2;
+        document.getElementById('s2').innerHTML = s2;
+    }
+
+    timeTask = setInterval(timer, 1000);
+</script>
 <!-- header -->
-
 <div th:replace="site/header::header"></div>
-
 <!-- header -->
-
 <!-- main -->
+<main role="main-inner-wrapper" class="container">
+    <div class="row">
+        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+            <article role="pge-title-content">
+                <header>
+                    <h2><span>wzy</span>の是大二的Java小白</h2>
+                </header>
+                <p>晚霞里的风已吹干了衣裳</p>
+                <p>彩虹下的人不会迷失方向</p>
+                <p>学习Java已 <b id="d1" style="font-size: 50px !important;"></b> 天
+                <div class="timer">
+                    <p>博客已诞生
+                        <c id="d2"></c>
+                        天
+                        <c id="h2"></c>
+                        时
+                        <c id="m2"></c>
+                        分
+                        <c id="s2"></c>
+                        秒
+                    </p>
+                </div>
+            </article>
 
-<main role="main-home-wrapper" class="container">
-  <div class="row">
-    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
-      <article role="pge-title-content">
-        <header>
-          <h2><span>Luis</span> A Java Developer.</h2>
-        </header>
-        <p>maker of things for the web app, always focused on elegant simplicity, relentlessly learning by making mistakes.</p>
-      </article>
-    </section>
-    <th:block th:each="archive,archiveStat : ${archives.list}">
-      <th:block th:if="${archiveStat.index == 1}">
-        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-          <figure class="effect-oscar"> <img th:src="${commons.show_thumb(archive.content)}" alt="" class="img-responsive"/>
-            <figcaption>
-              <h2><th:block th:text="${archive.title}" ></th:block></h2>
-              <p><th:block th:utext="${commons.fmtdate_en(archive.created)}"></th:block></p>
-              <a th:href="${commons.photoPermalink(archive.cid)}">View more</a> </figcaption>
-          </figure>
         </section>
-      </th:block>
-    </th:block>
-
-    <!-- left -->
-    <div class="clearfix"></div>
-    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-      <ul class="grid-lod effect-2" id="grid">
-        <th:block th:each="archive,archiveStat : ${archives.list}">
-          <th:block th:if="${archiveStat.index != 1 && archiveStat.index % 2 == 0}">
-            <li>
-              <figure class="effect-oscar"> <img th:src="${commons.show_thumb(archive.content)}" alt="" class="img-responsive"/>
-                <figcaption>
-                  <h2><th:block th:text="${archive.title}" ></th:block></h2>
-                  <p><th:block th:utext="${commons.fmtdate_en(archive.created)}"></th:block></p>
-                  <a th:href="${commons.photoPermalink(archive.cid)}">View more</a> </figcaption>
-              </figure>
-            </li>
-          </th:block>
-        </th:block>
-      </ul>
-    </section>
-
-    <!-- right -->
-    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 grid">
-      <ul class="grid-lod effect-2" id="grid">
-        <th:block th:each="archive,archiveStat : ${archives.list}">
-          <th:block th:if="${archiveStat.index != 1 && archiveStat.index % 2 != 0}">
-            <li>
-              <figure class="effect-oscar"> <img th:src="${commons.show_thumb(archive.content)}" alt="" class="img-responsive"/>
-                <figcaption>
-                  <h2><th:block th:text="${archive.title}" ></th:block></h2>
-                  <p><th:block th:utext="${commons.fmtdate_en(archive.created)}"></th:block></p>
-                  <a th:href="${commons.photoPermalink(archive.cid)}">View more</a> </figcaption>
-              </figure>
-            </li>
-          </th:block>
-        </th:block>
-      </ul>
-    </section>
-    <div class="clearfix"></div>
-  </div>
+        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <article class="about-content">
+                <p> 我于22年10月开始学习spring框架，专注并致力于于写bug。</p>
+                <p> 截至23年1月19日，仅仅掌握spring基础框架以及mybatis和redis等知识。 </p>
+                <p> 学历不高，造诣不深，此纯属是为了个人喜好。 </p>
+                <p> 在开源代码my-site的基础上 进行修改和完善，这里特别鸣谢@Swagger。 </p>
+            </article>
+        </section>
+        <div class="clearfix"></div>
+        <!--        &lt;!&ndash; thumbnails &ndash;&gt;-->
+        <!--        <div class="thumbnails-pan">-->
+        <!--            <th:block th:each="link,linkStat : ${links}">-->
+        <!--                <th:block th:if="${linkStat.index < 3}">-->
+        <!--                    <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 ">-->
+        <!--                        <figure>-->
+        <!--                            <img th:src="@{'/site/images/about-images/about-image-' + ${linkStat.index+1} + '.jpg'}"-->
+        <!--                                 th:onclick="'javascript:linkFirend(\''+${link.slug}+'\')'" class="img-responsive"/>-->
+        <!--                            <figcaption>-->
+        <!--                                <h3>-->
+        <!--                                    <th:block th:text="${link.name}"></th:block>-->
+        <!--                                </h3>-->
+        <!--                                <h5>-->
+        <!--                                    <th:block th:text="${link.description}"></th:block>-->
+        <!--                                </h5>-->
+        <!--                            </figcaption>-->
+        <!--                        </figure>-->
+        <!--                    </section>-->
+        <!--                </th:block>-->
+        <!--            </th:block>-->
+        <!--        </div>-->
+        <!--        &lt;!&ndash; thumbnails &ndash;&gt;-->
+    </div>
 </main>
-
 <!-- main -->
-
 <!-- footer -->
 <div th:replace="site/footer::footer(${commons.site_title()},${commons.site_record()},${commons.site_url()})"></div>
 

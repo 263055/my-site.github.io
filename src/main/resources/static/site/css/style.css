@@ -716,9 +716,9 @@ color:#404040;
 	opacity: 0.85
 }
 
-.icon.weibo {
-	background-image: url(/site/images/social/icon-weibo.png)
-}
+/*.icon.weibo {*/
+/*	background-image: url(/site/images/social/icon-weibo.png)*/
+/*}*/
 
 
 
@@ -734,9 +734,9 @@ color:#404040;
 
 
 
-.icon.twitter {
-	background-image: url(/site/images/social/icon-twitter.png)
-}
+/*.icon.twitter {*/
+/*	background-image: url(/site/images/social/icon-twitter.png)*/
+/*}*/
 
 
 
@@ -774,18 +774,18 @@ color:#404040;
 }
 
 
-.icon.jianshu{
-	background-image: url(/site/images/social/icon-jianshu.png)
-}
+/*.icon.jianshu{*/
+/*	background-image: url(/site/images/social/icon-jianshu.png)*/
+/*}*/
 
 
-.icon.resume{
-	background-image: url(/site/images/social/icon-resume.png)
-}
+/*.icon.resume{*/
+/*	background-image: url(/site/images/social/icon-resume.png)*/
+/*}*/
 
-.icon.zhihu{
-	background-image: url(/site/images/social/icon-zhihu.png)
-}
+/*.icon.zhihu{*/
+/*	background-image: url(/site/images/social/icon-zhihu.png)*/
+/*}*/
 
 
 p>img {
